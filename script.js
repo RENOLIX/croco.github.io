@@ -1,0 +1,85 @@
+const WILAYAS = [
+  'Adrar','Chlef','Laghouat','Oum El Bouaghi','Batna','Béjaïa','Biskra','Béchar','Blida','Bouira','Tamanrasset','Tébessa','Tlemcen','Tiaret','Tizi Ouzou','Alger','Djelfa','Jijel','Sétif','Saïda','Skikda','Sidi Bel Abbès','Annaba','Guelma','Constantine','Médéa','Mostaganem','M’Sila','Mascara','Ouargla','Oran','El Bayadh','Illizi','Bordj Bou Arréridj','Boumerdès','El Tarf','Tindouf','Tissemsilt','El Oued','Khenchela','Souk Ahras','Tipaza','Mila','Aïn Defla','Naâma','Aïn Témouchent','Ghardaïa','Relizane','Timimoun','Bordj Badji Mokhtar','Ouled Djellal','Béni Abbès','In Salah','In Guezzam','Touggourt','Djanet','El M’Ghaïer','El Meniaa'
+];
+const PRICE = 9000;
+const form = document.querySelector('#order-form');
+const quantityInput = document.querySelector('#quantity');
+const feedback = document.querySelector('#form-feedback');
+const deliveryInputs = [...document.querySelectorAll('input[name="Livraison"]')];
+const addressField = document.querySelector('#address-field');
+const addressInput = document.querySelector('#address');
+const money = amount => `${new Intl.NumberFormat('fr-FR').format(amount)} DA`;
+
+WILAYAS.forEach((wilaya, index) => {
+  const option = document.createElement('option');
+  option.value = wilaya;
+  option.textContent = `${String(index + 1).padStart(2, '0')} - ${wilaya}`;
+  document.querySelector('#wilaya').append(option);
+});
+
+function getQuantity() {
+  return Math.min(20, Math.max(1, Number.parseInt(quantityInput.value, 10) || 1));
+}
+function updatePrice() {
+  const quantity = getQuantity();
+  quantityInput.value = quantity;
+  document.querySelector('#summary-quantity').textContent = quantity;
+  document.querySelector('#subtotal').textContent = money(quantity * PRICE);
+  document.querySelector('#total').textContent = money(quantity * PRICE);
+  document.querySelector('#button-total').textContent = money(quantity * PRICE);
+}
+document.querySelector('#quantity-minus').addEventListener('click', () => { quantityInput.value = getQuantity() - 1; updatePrice(); });
+document.querySelector('#quantity-plus').addEventListener('click', () => { quantityInput.value = getQuantity() + 1; updatePrice(); });
+quantityInput.addEventListener('change', updatePrice);
+quantityInput.addEventListener('input', updatePrice);
+
+deliveryInputs.forEach(input => input.addEventListener('change', () => {
+  const atHome = document.querySelector('input[name="Livraison"]:checked').value === 'Domicile';
+  addressField.hidden = !atHome;
+  addressInput.required = atHome;
+  if (!atHome) addressInput.value = '';
+}));
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  feedback.className = 'form-feedback';
+  feedback.textContent = '';
+  updatePrice();
+  if (!form.reportValidity()) return;
+
+  const key = window.CROCODRILO_CONFIG?.web3formsAccessKey?.trim();
+  if (!key) {
+    feedback.textContent = 'La réception des commandes doit encore être configurée. Votre commande n’a pas été envoyée.';
+    return;
+  }
+
+  const submitButton = form.querySelector('[type="submit"]');
+  submitButton.disabled = true;
+  feedback.textContent = 'Envoi en cours…';
+  const data = new FormData(form);
+  data.append('access_key', key);
+  data.append('subject', 'Nouvelle commande Crocodrilo Clothing');
+  data.append('from_name', 'Crocodrilo Clothing');
+  data.append('Produit', 'Ensemble Lacoste noir 3 pièces');
+  data.append('Prix unitaire', money(PRICE));
+  data.append('Frais de livraison', '0 DA');
+  data.append('Total commande', money(getQuantity() * PRICE));
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    const result = await response.json();
+    if (!response.ok || !result.success) throw new Error('Envoi refusé');
+    feedback.className = 'form-feedback success';
+    feedback.textContent = 'Merci ! Votre commande a bien été envoyée. Nous vous contacterons pour la confirmer.';
+    form.reset();
+    addressField.hidden = true;
+    addressInput.required = false;
+    updatePrice();
+  } catch {
+    feedback.textContent = 'Envoi impossible pour le moment. Veuillez réessayer un peu plus tard.';
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
+document.querySelector('#year').textContent = new Date().getFullYear();
+updatePrice();
