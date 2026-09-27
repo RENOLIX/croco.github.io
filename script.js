@@ -64,16 +64,12 @@ form.addEventListener('submit', async event => {
   data.append('Prix unitaire', money(PRICE));
   data.append('Frais de livraison', '0 DA');
   data.append('Total commande', money(getQuantity() * PRICE));
+  data.append('redirect', new URL(window.CROCODRILO_CONFIG?.thankYouPage || 'merci.html', window.location.href).href);
   try {
     const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
     const result = await response.json();
     if (!response.ok || !result.success) throw new Error('Envoi refusé');
-    feedback.className = 'form-feedback success';
-    feedback.textContent = 'Merci ! Votre commande a bien été envoyée. Nous vous contacterons pour la confirmer. / شكرا! تم إرسال طلبك وسنتصل بك لتأكيده.';
-    form.reset();
-    addressField.hidden = true;
-    addressInput.required = false;
-    updatePrice();
+    window.location.assign(window.CROCODRILO_CONFIG?.thankYouPage || 'merci.html');
   } catch {
     feedback.textContent = 'Envoi impossible pour le moment. Veuillez réessayer un peu plus tard. / تعذر إرسال الطلب حاليا، يرجى المحاولة لاحقا.';
   } finally {

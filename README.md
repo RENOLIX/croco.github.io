@@ -16,15 +16,16 @@ Ouvrir ensuite `http://127.0.0.1:4173/`.
 
 ## Recevoir les commandes
 
-Le formulaire est prêt, mais ne transmet aucune commande tant que la réception n'est pas configurée. Créer une clé d'accès Web3Forms associée à l'adresse e-mail choisie, puis la placer dans `config.js` :
+Le formulaire est relié à Web3Forms et redirige vers `merci.html` après une commande acceptée. La clé est stockée dans `config.js` pour permettre l'envoi depuis la page statique.
 
 ```js
 window.CROCODRILO_CONFIG = {
-  web3formsAccessKey: "VOTRE_CLE"
+  web3formsAccessKey: "VOTRE_CLE",
+  thankYouPage: "merci.html"
 };
 ```
 
-Faire ensuite une commande d'essai avec des données fictives et vérifier sa réception. Une clé Web3Forms est destinée au formulaire côté navigateur et devient visible dans le code public du site.
+Faire ensuite une commande d'essai avec des données fictives et vérifier sa réception. Une clé Web3Forms côté navigateur devient visible dans le code public du site.
 
 ## Fichiers
 
