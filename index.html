@@ -69,7 +69,7 @@
           <h2 id="order-title">Votre style,<br><em>à votre taille.</em></h2>
           <p>Choisissez votre taille et renseignez vos coordonnées. Le total inclut la livraison gratuite, quelle que soit votre wilaya.</p>
           <div class="order-mini-product"><img src="assets/ensemble-lacoste-face.jpeg" alt="Aperçu de l'ensemble Lacoste 3 pièces"><div><strong>Ensemble Lacoste 3 pièces</strong><span>Haut · pantalon · veste</span><b>9 000 DA</b></div></div>
-          <div class="trust-note"><svg class="icon" aria-hidden="true"><use href="#icon-truck"/></svg><p><span lang="ar" dir="rtl">التوصيل مجاني إلى جميع ولايات الجزائر</span><br><small>Point relais ou domicile, partout en Algérie</small></p></div>
+            <div class="trust-note"><svg class="icon" aria-hidden="true"><use href="#icon-truck"/></svg><p><span lang="ar" dir="rtl">التوصيل مجاني إلى جميع ولايات الجزائر</span><br><small>Livraison à domicile, partout en Algérie</small></p></div>
         </aside>
         <form class="order-card" id="order-form" novalidate>
           <div class="form-top"><span>FORMULAIRE DE COMMANDE / <span lang="ar" dir="rtl">استمارة الطلب</span></span><span class="form-icon" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-up"/></svg></span></div>
@@ -92,8 +92,9 @@
             <div class="field wide"><label for="wilaya">Wilaya / <span lang="ar" dir="rtl">الولاية</span> <span class="required">*</span></label><select id="wilaya" name="Wilaya" required><option value="">Choisir votre wilaya / اختر ولايتك</option></select></div>
           </div>
 
-          <fieldset class="delivery-fieldset"><legend>Mode de livraison / <span lang="ar" dir="rtl">طريقة التوصيل</span></legend><div class="delivery-options"><label><input type="radio" name="Livraison" value="Stop Desk" checked><span><b>Point relais / <span lang="ar" dir="rtl">مكتب التوصيل</span></b><small>Retrait au bureau / <span lang="ar" dir="rtl">الاستلام من المكتب</span></small></span></label><label><input type="radio" name="Livraison" value="Domicile"><span><b>À domicile / <span lang="ar" dir="rtl">إلى المنزل</span></b><small>À votre adresse / <span lang="ar" dir="rtl">إلى عنوانك</span></small></span></label></div></fieldset>
-          <div class="field address-field" id="address-field" hidden><label for="address">Adresse de livraison / <span lang="ar" dir="rtl">عنوان التوصيل</span> <span class="required">*</span></label><input id="address" name="Adresse" type="text" autocomplete="street-address" placeholder="Commune, rue et numéro / البلدية والشارع"></div>
+          <div class="delivery-home-note"><svg class="icon" aria-hidden="true"><use href="#icon-truck"/></svg><div><b>Livraison à domicile / <span lang="ar" dir="rtl">التوصيل إلى المنزل</span></b><small><span lang="ar" dir="rtl">التوصيل مجاني إلى جميع ولايات الجزائر</span><br>Livraison gratuite partout en Algérie</small></div></div>
+          <input type="hidden" name="Livraison" value="Domicile">
+          <div class="field address-field" id="address-field"><label for="address">Adresse de livraison / <span lang="ar" dir="rtl">عنوان التوصيل</span> <span class="required">*</span></label><input id="address" name="Adresse" type="text" autocomplete="street-address" placeholder="Commune, rue et numéro / البلدية والشارع" required></div>
 
           <div class="order-summary"><div><span>Ensemble Lacoste 3 pièces / <span lang="ar" dir="rtl">طقم لاكوست 3 قطع</span> × <span id="summary-quantity">1</span></span><strong id="subtotal">9 000 DA</strong></div><div><span>Livraison / <span lang="ar" dir="rtl">التوصيل</span></span><strong class="free"><span lang="ar" dir="rtl">مجانية</span> · Gratuite</strong></div><div class="total-row"><span>Total / <span lang="ar" dir="rtl">المجموع</span></span><strong id="total">9 000 DA</strong></div></div>
           <button class="submit-button" type="submit"><span>Confirmer la commande / <span lang="ar" dir="rtl">تأكيد الطلب</span></span><span id="button-total">9 000 DA</span></button>

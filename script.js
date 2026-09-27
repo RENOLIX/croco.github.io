@@ -5,8 +5,6 @@ const PRICE = 9000;
 const form = document.querySelector('#order-form');
 const quantityInput = document.querySelector('#quantity');
 const feedback = document.querySelector('#form-feedback');
-const deliveryInputs = [...document.querySelectorAll('input[name="Livraison"]')];
-const addressField = document.querySelector('#address-field');
 const addressInput = document.querySelector('#address');
 const money = amount => `${new Intl.NumberFormat('fr-FR').format(amount)} DA`;
 const productPhoto = document.querySelector('#product-photo');
@@ -42,13 +40,6 @@ document.querySelector('#quantity-minus').addEventListener('click', () => { quan
 document.querySelector('#quantity-plus').addEventListener('click', () => { quantityInput.value = getQuantity() + 1; updatePrice(); });
 quantityInput.addEventListener('change', updatePrice);
 quantityInput.addEventListener('input', updatePrice);
-
-deliveryInputs.forEach(input => input.addEventListener('change', () => {
-  const atHome = document.querySelector('input[name="Livraison"]:checked').value === 'Domicile';
-  addressField.hidden = !atHome;
-  addressInput.required = atHome;
-  if (!atHome) addressInput.value = '';
-}));
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
