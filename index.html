@@ -9,10 +9,10 @@
   <link rel="icon" href="assets/crocodrilo-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
   <script src="config.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </head>
 <body>
   <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
         <img src="assets/crocodrilo-logo.png" alt="Logo Crocodrilo Clothing" width="52" height="52">
         <span><strong>CROCODRILO</strong><small>CLOTHING</small></span>
       </a>
-      <a class="header-link" href="#commande">Commander <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"/></svg></a>
+      <a class="header-link" href="#commande"><span lang="ar" dir="rtl">اطلب الان</span> <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"/></svg></a>
     </div>
   </header>
 
@@ -48,7 +48,7 @@
         <p class="hero-description">Un ensemble Lacoste noir 3 pièces : haut, pantalon et veste. Une silhouette sportive et épurée, facile à porter au quotidien.</p>
         <div class="product-heading"><span>ENSEMBLE LACOSTE · 3 PIÈCES</span><span>01 / CROCODRILO</span></div>
         <div class="price-line"><strong>9 000 <small>DA</small></strong><span class="price-divider"></span><span class="shipping-copy"><b lang="ar" dir="rtl">التوصيل مجاني في الجزائر</b><small>Livraison gratuite partout en Algérie</small></span></div>
-        <div class="hero-actions"><a class="primary-button" href="#commande">Commander maintenant <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"/></svg></a><a class="text-link" href="#details">Voir les détails <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg></a></div>
+        <div class="hero-actions"><a class="primary-button" href="#commande"><span lang="ar" dir="rtl">اطلب الان</span> <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"/></svg></a><a class="text-link" href="#details">Voir les détails <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg></a></div>
         <div class="quick-facts"><span><b>01—05</b> Tailles disponibles</span><span><b>58</b> Wilayas livrées</span></div>
       </div>
     </section>
@@ -67,11 +67,11 @@
           <div class="trust-note"><svg class="icon" aria-hidden="true"><use href="#icon-truck"/></svg><p><span lang="ar" dir="rtl">التوصيل مجاني إلى جميع ولايات الجزائر</span><br><small>Point relais ou domicile, partout en Algérie</small></p></div>
         </aside>
         <form class="order-card" id="order-form" novalidate>
-          <div class="form-top"><span>FORMULAIRE DE COMMANDE</span><span class="form-icon" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-up"/></svg></span></div>
-          <h3>Commander maintenant</h3>
-          <p class="form-subtitle">Renseignez les informations nécessaires à votre commande.</p>
+          <div class="form-top"><span>FORMULAIRE DE COMMANDE / <span lang="ar" dir="rtl">استمارة الطلب</span></span><span class="form-icon" aria-hidden="true"><svg class="icon"><use href="#icon-arrow-up"/></svg></span></div>
+          <h3><span lang="ar" dir="rtl">اطلب الان</span></h3>
+          <p class="form-subtitle">Renseignez les informations nécessaires à votre commande.<br><span lang="ar" dir="rtl">أدخل معلوماتك لإتمام الطلب.</span></p>
 
-          <fieldset class="size-fieldset"><legend>Votre taille <span class="required">*</span></legend><div class="size-options">
+          <fieldset class="size-fieldset"><legend>Votre taille / <span lang="ar" dir="rtl">المقاس</span> <span class="required">*</span></legend><div class="size-options">
             <label><input type="radio" name="Taille" value="1" required><span>1</span></label>
             <label><input type="radio" name="Taille" value="2"><span>2</span></label>
             <label><input type="radio" name="Taille" value="3"><span>3</span></label>
@@ -79,19 +79,19 @@
             <label><input type="radio" name="Taille" value="5"><span>5</span></label>
           </div></fieldset>
 
-          <div class="field quantity-field"><label for="quantity">Quantité</label><div class="quantity-control"><button type="button" id="quantity-minus" aria-label="Diminuer la quantité">−</button><input id="quantity" name="Quantite" type="number" min="1" max="20" value="1" inputmode="numeric"><button type="button" id="quantity-plus" aria-label="Augmenter la quantité">+</button></div></div>
+          <div class="field quantity-field"><label for="quantity">Quantité / <span lang="ar" dir="rtl">الكمية</span></label><div class="quantity-control"><button type="button" id="quantity-minus" aria-label="Diminuer la quantité / تقليل الكمية">−</button><input id="quantity" name="Quantite" type="number" min="1" max="20" value="1" inputmode="numeric"><button type="button" id="quantity-plus" aria-label="Augmenter la quantité / زيادة الكمية">+</button></div></div>
 
           <div class="form-grid">
-            <div class="field"><label for="customer-name">Prénom et nom <span class="required">*</span></label><input id="customer-name" name="Nom complet" type="text" autocomplete="name" placeholder="Votre nom complet" required></div>
-            <div class="field"><label for="customer-phone">Téléphone <span class="required">*</span></label><input id="customer-phone" name="Telephone" type="tel" autocomplete="tel" inputmode="tel" placeholder="05 / 06 / 07…" pattern="^(?:\+213|0)[5-7][0-9]{8}$" required></div>
-            <div class="field wide"><label for="wilaya">Wilaya <span class="required">*</span></label><select id="wilaya" name="Wilaya" required><option value="">Choisir votre wilaya</option></select></div>
+            <div class="field"><label for="customer-name">Prénom et nom / <span lang="ar" dir="rtl">الاسم واللقب</span> <span class="required">*</span></label><input id="customer-name" name="Nom complet" type="text" autocomplete="name" placeholder="Votre nom complet / الاسم واللقب" required></div>
+            <div class="field"><label for="customer-phone">Téléphone / <span lang="ar" dir="rtl">رقم الهاتف</span> <span class="required">*</span></label><input id="customer-phone" name="Telephone" type="tel" autocomplete="tel" inputmode="tel" placeholder="05 / 06 / 07…" pattern="^(?:\+213|0)[5-7][0-9]{8}$" required></div>
+            <div class="field wide"><label for="wilaya">Wilaya / <span lang="ar" dir="rtl">الولاية</span> <span class="required">*</span></label><select id="wilaya" name="Wilaya" required><option value="">Choisir votre wilaya / اختر ولايتك</option></select></div>
           </div>
 
-          <fieldset class="delivery-fieldset"><legend>Mode de livraison</legend><div class="delivery-options"><label><input type="radio" name="Livraison" value="Stop Desk" checked><span><b>Point relais</b><small>Retrait au bureau</small></span></label><label><input type="radio" name="Livraison" value="Domicile"><span><b>À domicile</b><small>À votre adresse</small></span></label></div></fieldset>
-          <div class="field address-field" id="address-field" hidden><label for="address">Adresse de livraison <span class="required">*</span></label><input id="address" name="Adresse" type="text" autocomplete="street-address" placeholder="Commune, rue et numéro"></div>
+          <fieldset class="delivery-fieldset"><legend>Mode de livraison / <span lang="ar" dir="rtl">طريقة التوصيل</span></legend><div class="delivery-options"><label><input type="radio" name="Livraison" value="Stop Desk" checked><span><b>Point relais / <span lang="ar" dir="rtl">مكتب التوصيل</span></b><small>Retrait au bureau / <span lang="ar" dir="rtl">الاستلام من المكتب</span></small></span></label><label><input type="radio" name="Livraison" value="Domicile"><span><b>À domicile / <span lang="ar" dir="rtl">إلى المنزل</span></b><small>À votre adresse / <span lang="ar" dir="rtl">إلى عنوانك</span></small></span></label></div></fieldset>
+          <div class="field address-field" id="address-field" hidden><label for="address">Adresse de livraison / <span lang="ar" dir="rtl">عنوان التوصيل</span> <span class="required">*</span></label><input id="address" name="Adresse" type="text" autocomplete="street-address" placeholder="Commune, rue et numéro / البلدية والشارع"></div>
 
-          <div class="order-summary"><div><span>Ensemble 3 pièces × <span id="summary-quantity">1</span></span><strong id="subtotal">9 000 DA</strong></div><div><span>Livraison</span><strong class="free"><span lang="ar" dir="rtl">مجانية</span> · Gratuite</strong></div><div class="total-row"><span>Total</span><strong id="total">9 000 DA</strong></div></div>
-          <button class="submit-button" type="submit">Envoyer ma commande <span id="button-total">9 000 DA</span></button>
+          <div class="order-summary"><div><span>Ensemble 3 pièces / <span lang="ar" dir="rtl">طقم 3 قطع</span> × <span id="summary-quantity">1</span></span><strong id="subtotal">9 000 DA</strong></div><div><span>Livraison / <span lang="ar" dir="rtl">التوصيل</span></span><strong class="free"><span lang="ar" dir="rtl">مجانية</span> · Gratuite</strong></div><div class="total-row"><span>Total / <span lang="ar" dir="rtl">المجموع</span></span><strong id="total">9 000 DA</strong></div></div>
+          <button class="submit-button" type="submit"><span>Confirmer la commande / <span lang="ar" dir="rtl">تأكيد الطلب</span></span><span id="button-total">9 000 DA</span></button>
           <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
         </form>
       </div>

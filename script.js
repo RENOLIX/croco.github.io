@@ -49,13 +49,13 @@ form.addEventListener('submit', async event => {
 
   const key = window.CROCODRILO_CONFIG?.web3formsAccessKey?.trim();
   if (!key) {
-    feedback.textContent = 'La réception des commandes doit encore être configurée. Votre commande n’a pas été envoyée.';
+    feedback.textContent = 'La réception des commandes doit encore être configurée. Votre commande n’a pas été envoyée. / لم يتم إرسال طلبك بعد، يجب إعداد استقبال الطلبات.';
     return;
   }
 
   const submitButton = form.querySelector('[type="submit"]');
   submitButton.disabled = true;
-  feedback.textContent = 'Envoi en cours…';
+  feedback.textContent = 'Envoi en cours… / جار إرسال الطلب…';
   const data = new FormData(form);
   data.append('access_key', key);
   data.append('subject', 'Nouvelle commande Crocodrilo Clothing');
@@ -69,13 +69,13 @@ form.addEventListener('submit', async event => {
     const result = await response.json();
     if (!response.ok || !result.success) throw new Error('Envoi refusé');
     feedback.className = 'form-feedback success';
-    feedback.textContent = 'Merci ! Votre commande a bien été envoyée. Nous vous contacterons pour la confirmer.';
+    feedback.textContent = 'Merci ! Votre commande a bien été envoyée. Nous vous contacterons pour la confirmer. / شكرا! تم إرسال طلبك وسنتصل بك لتأكيده.';
     form.reset();
     addressField.hidden = true;
     addressInput.required = false;
     updatePrice();
   } catch {
-    feedback.textContent = 'Envoi impossible pour le moment. Veuillez réessayer un peu plus tard.';
+    feedback.textContent = 'Envoi impossible pour le moment. Veuillez réessayer un peu plus tard. / تعذر إرسال الطلب حاليا، يرجى المحاولة لاحقا.';
   } finally {
     submitButton.disabled = false;
   }
