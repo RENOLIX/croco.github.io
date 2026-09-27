@@ -66,14 +66,20 @@ form.addEventListener('submit', async event => {
   data.append('Frais de livraison', '0 DA');
   data.append('Total commande', money(getQuantity() * PRICE));
   data.append('redirect', new URL(window.CROCODRILO_CONFIG?.thankYouPage || 'merci.html', window.location.href).href);
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 15000);
   try {
-    const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data, signal: controller.signal });
     const result = await response.json();
     if (!response.ok || !result.success) throw new Error('Envoi refusé');
     window.location.assign(window.CROCODRILO_CONFIG?.thankYouPage || 'merci.html');
-  } catch {
-    feedback.textContent = 'Envoi impossible pour le moment. Veuillez réessayer un peu plus tard. / تعذر إرسال الطلب حاليا، يرجى المحاولة لاحقا.';
+  } catch (error) {
+    const timedOut = error?.name === 'AbortError';
+    feedback.textContent = timedOut
+      ? 'Le service met trop de temps à répondre. Vérifiez votre connexion puis réessayez. / يستغرق الخادم وقتا طويلا. تحقق من الاتصال ثم أعد المحاولة.'
+      : 'Envoi impossible pour le moment. Veuillez réessayer un peu plus tard. / تعذر إرسال الطلب حاليا، يرجى المحاولة لاحقا.';
   } finally {
+    window.clearTimeout(timeout);
     submitButton.disabled = false;
   }
 });
