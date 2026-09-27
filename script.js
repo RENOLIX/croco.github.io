@@ -9,6 +9,16 @@ const deliveryInputs = [...document.querySelectorAll('input[name="Livraison"]')]
 const addressField = document.querySelector('#address-field');
 const addressInput = document.querySelector('#address');
 const money = amount => `${new Intl.NumberFormat('fr-FR').format(amount)} DA`;
+const productPhoto = document.querySelector('#product-photo');
+document.querySelectorAll('.gallery-thumb').forEach(button => button.addEventListener('click', () => {
+  productPhoto.src = button.dataset.image;
+  productPhoto.alt = button.dataset.alt;
+  document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+    const selected = thumb === button;
+    thumb.classList.toggle('is-active', selected);
+    thumb.setAttribute('aria-pressed', String(selected));
+  });
+}));
 
 WILAYAS.forEach((wilaya, index) => {
   const option = document.createElement('option');
@@ -60,7 +70,7 @@ form.addEventListener('submit', async event => {
   data.append('access_key', key);
   data.append('subject', 'Nouvelle commande Crocodrilo Clothing');
   data.append('from_name', 'Crocodrilo Clothing');
-  data.append('Produit', 'Ensemble Lacoste noir 3 pièces');
+  data.append('Produit', 'Ensemble Lacoste 3 pièces');
   data.append('Prix unitaire', money(PRICE));
   data.append('Frais de livraison', '0 DA');
   data.append('Total commande', money(getQuantity() * PRICE));

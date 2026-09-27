@@ -1,6 +1,6 @@
 # Landing Crocodrilo Clothing
 
-Page statique pour l'ensemble Lacoste noir 3 pièces. Prix : 9 000 DA. Tailles : 1 à 5. Livraison gratuite dans les 58 wilayas, en point relais ou à domicile.
+Page statique pour l'ensemble Lacoste 3 pièces. Prix : 9 000 DA. Tailles : 1 à 5. Livraison gratuite dans les 58 wilayas, en point relais ou à domicile.
 
 Site public : https://renolix.github.io/croco.github.io/
 
